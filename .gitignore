@@ -21,4 +21,7 @@ build
 eclipse
 run
 
+# Maven
+target
+
 *.DS_Store
