@@ -1,2 +1,2 @@
 # gpt3-AutoEssayWriter-Java
- Ai wrighter java
+ Ai writer java
