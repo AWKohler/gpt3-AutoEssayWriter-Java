@@ -20,6 +20,8 @@ public class ApplicationFrame extends javax.swing.JFrame {
     private void initComponents() {
         setSize(800, 600);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
 
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new GridLayout(1, 2, 10, 10));
@@ -46,9 +48,10 @@ public class ApplicationFrame extends javax.swing.JFrame {
         instructPane.setWrapStyleWord(true);
 
 
+        // The text Area
         editorPane = new JTextArea();
         TitledBorder titledBorder = new TitledBorder("Enter prompt here");
-        editorPane.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        editorPane.setFont(new Font("Monospaced", Font.PLAIN, 18));//14));
         editorPane.setLineWrap(true);
         editorPane.setWrapStyleWord(true);
         editorPane.setBorder(titledBorder);
@@ -67,6 +70,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jPanel.add(scrollPane, "cell 1 10,growy");
 
 
+        // Button panel
         JPanel outerButtonPanel = new JPanel();
 
         JButton completeButton = new JButton("Complete");
@@ -78,6 +82,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         outerButtonPanel.add(apiButton, "wrap");
         outerButtonPanel.add(copyButton, "wrap");
 
+        // Button action listeners
         apiButton.addActionListener(e -> {
             TrainingFrame trainingFrame = new TrainingFrame();
         });
@@ -113,8 +118,13 @@ public class ApplicationFrame extends javax.swing.JFrame {
         t.start();
     }
 
-    public void complete(){
-        Gpt3interface.sendRequest(getPreparedText(), this);
+    public void complete() {
+        try {
+            Gpt3interface.sendRequest(getPreparedText(), this);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ErrorFrame errorFrame = new ErrorFrame("API Error: GPT3 API could not be reached");
+        }
     }
 
     public String getPreparedText(){

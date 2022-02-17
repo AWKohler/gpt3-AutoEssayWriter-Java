@@ -5,6 +5,7 @@ import com.theokanning.openai.completion.CompletionChoice;
 import com.theokanning.openai.completion.CompletionRequest;
 import me.aronne.app.frame.ApplicationFrame;
 
+import java.net.SocketException;
 import java.util.List;
 
 public class Gpt3interface {
@@ -13,7 +14,7 @@ public class Gpt3interface {
     static OpenAiService service = new OpenAiService("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");
 
 
-    public static void sendRequest(String text, ApplicationFrame frame) {
+    public static void sendRequest(String text, ApplicationFrame frame) throws Exception {
 
         CompletionRequest completionRequest = CompletionRequest.builder()
                 .prompt(text)

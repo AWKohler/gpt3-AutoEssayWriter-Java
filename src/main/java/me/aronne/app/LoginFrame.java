@@ -1,6 +1,7 @@
 package me.aronne.app;
 
 import me.aronne.app.frame.ApplicationFrame;
+import me.aronne.app.frame.OptionFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,9 +57,8 @@ public class LoginFrame extends javax.swing.JFrame{
                 setVisible(false);
                 //loginFrame.dispose();
 
-                ApplicationFrame applicationFrame = new ApplicationFrame();
-                applicationFrame.setLocationRelativeTo(null);
-                applicationFrame.setVisible(true);
+//                new ApplicationFrame();
+                new OptionFrame();
 
             }
         });
